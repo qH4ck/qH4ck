@@ -1,0 +1,10 @@
+# IntelliJ IDEA
+.idea
+
+# MacOS
+.DS_Store
+
+# Node.js
+node_modules
+
+# Misc
