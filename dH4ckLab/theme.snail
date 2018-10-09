@@ -1,0 +1,15 @@
+# This line tells snail what theme to choose (* for random theme)
+*
+
+# The syntax is very simple
+\(qh4ck\) ($blk_snail) > \\u ($red_snail) > \\w ($red_snail_) > 
+\(qh4ck\) ($blk_snail) > \\u ($gre_snail) > \\w ($gre_snail_) > 
+\(qh4ck\) ($blk_snail) > \\u ($blu_snail) > \\w ($blu_snail_) > 
+\(qh4ck\) ($blk_snail) > \\u ($orn_snail) > \\w ($orn_snail_) > 
+\(qh4ck\) ($blk_snail) > \\u ($brw_snail) > \\w ($brw_snail_) > 
+\(qh4ck\) ($blk_snail) > \\u ($gry_snail) > \\w ($gry_snail_) > 
+
+\(qh4ck\) ($blk_snail) > \\u ($blu_snail) > \\w ($orn_snail) > 
+\(qh4ck\) ($blk_snail) > \\u ($blu_snail) > \\w ($gre_snail) > 
+\(qh4ck\) ($blk_snail) > \\u ($brw_snail) > \\w ($gre_snail) > 
+\(qh4ck\) ($blk_snail) > \\u ($pnk_snail) > \\w ($orn_snail_) > 
