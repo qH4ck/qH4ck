@@ -7,7 +7,6 @@ ENV DEBCONF_NONINTERACTIVE_SEEN true
 RUN apt-get update && apt-get -y upgrade
 
 # Basic
-RUN mkdir /home/q4hck
 RUN apt-get install -y git sudo
 WORKDIR "/home/qh4ck"
 # Snail :)
@@ -19,5 +18,5 @@ COPY ./theme.snail /root/.snail/theme.snail
 COPY ./greetings.snail /root/.snail/greetings.snail
 
 # Miscellaneous
-RUN apt-get install -y binwalk
+# RUN apt-get install -y binwalk
 

@@ -1,14 +1,28 @@
 IMAGE=dh4ck_lab
 CONTAINER=dh4ck
-
 function dh4ck_up() {
+  local wpath="$1"
+  local volume=""
+
+  # Setting volume if path was specified
+  if [[ ! -z "${wpath}" ]]; then 
+    if [ ! -d "${wpath}" ]; then
+      echo "Unknown path: cannot mount directory as volume"
+      return
+    fi
+    volume="-v ${wpath}:/home/qh4ck/host_data"
+    # Remove the container to reset volume
+    docker stop ${CONTAINER} > /dev/null 2>&1;
+    docker rm ${CONTAINER} > /dev/null 2>&1;
+  fi
+
   # Check if image exists
   if [ ! "$(docker images | grep ${IMAGE})" ]; then
     docker build -t dh4ck_lab . # TODO: add image to docker hub
   fi
   # Check if container exist
   if [ ! "$(docker ps -a | grep ${CONTAINER})" ]; then
-    docker run -id --name ${CONTAINER} ${IMAGE}
+    docker run ${volume} -id --name ${CONTAINER} ${IMAGE}
   else
     # If stopped restart
     if [ ! "$(docker ps | grep ${CONTAINER})" ]; then
@@ -20,6 +34,7 @@ function dh4ck_up() {
 }
 
 function dh4ck() {
+  local wpath=""
   local stopcontainer=false
   local removecontainer=false
   local removeimage=false
@@ -31,10 +46,18 @@ function dh4ck() {
   -h, --help:    display options
   "
 
-
-  # If no arguments run the lab
+  # If no arguments run the lab otherwise, if a path is provided
+  # Parse the path and run the lab mounting the volume
   if [ $# -eq 0 ]; then
     dh4ck_up; return
+  elif [[ "$1" == *'/'* ]]; then
+    # Parsing user argument as path
+    if [[ "$1" == '/'* ]]; then 
+      wpath="$1"
+    else 
+      wpath="$(pwd)/$1"
+    fi
+    dh4ck_up "${wpath}"; return
   fi
 
   # Collecting arguments
