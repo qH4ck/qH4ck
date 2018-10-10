@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-## for apt to be noninteractive
+# For apt to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
@@ -16,6 +16,9 @@ RUN bash install.sh
 RUN rm /root/.snail/theme.snail /root/.snail/greetings.snail
 COPY ./theme.snail /root/.snail/theme.snail
 COPY ./greetings.snail /root/.snail/greetings.snail
+
+# Returning to home dir
+WORKDIR "/home/qh4ck/snail"
 
 # Miscellaneous
 # RUN apt-get install -y binwalk
